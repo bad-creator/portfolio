@@ -1,0 +1,14 @@
+#root {
+  --primary-color: #a9919100;
+}
+
+body {
+  background: rgb(28, 27, 34);
+  background: linear-gradient(
+    180deg,
+    rgba(20, 19, 25, 1) 0%,
+    rgba(28, 27, 34, 1) 50%,
+    rgba(20, 19, 25, 1) 100%
+  );
+  min-height: 100vh;
+}
