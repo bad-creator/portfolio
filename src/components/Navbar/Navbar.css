@@ -21,6 +21,10 @@
   color: var(--primary-color);
   cursor: pointer;
 }
+.navbar li.active {
+  color: var(--primary-color);
+  border-bottom: 0.2rem solid var(--primary-color);
+}
 .navlist {
   display: flex;
   align-items: center;
