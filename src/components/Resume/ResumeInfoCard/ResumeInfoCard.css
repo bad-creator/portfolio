@@ -1,0 +1,26 @@
+.resume-info-card {
+  background-color: var(--card-color);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+.resume-info-card-year {
+  color: var(--primary-color);
+}
+.resume-info-card-header {
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+}
+.resume-info-card-details {
+  color: var(--secondary-color);
+}
+
+.resume-info-card-details::before {
+  content: "";
+  height: 6px;
+  width: 6px;
+  border-radius: 6px;
+  background-color: var(--primary-color);
+  display: inline-block;
+  margin-bottom: 3px;
+  margin-right: 6px;
+}

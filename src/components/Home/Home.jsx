@@ -1,4 +1,4 @@
-import CountComponent from "../CountComponent/CountComponent";
+import CountComponent from "./CountComponent/CountComponent";
 import "./Home.css";
 
 export default function Home() {
