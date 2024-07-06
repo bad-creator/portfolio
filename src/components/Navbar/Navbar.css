@@ -1,0 +1,28 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  height: 124px;
+}
+.logo {
+  display: flex;
+}
+.logo span {
+  color: var(--primary-color);
+}
+.navbar ul {
+  display: flex;
+  gap: 1.5em;
+}
+
+.navbar li:hover {
+  color: var(--primary-color);
+  cursor: pointer;
+}
+.navlist {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
