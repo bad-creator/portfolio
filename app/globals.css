@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+:root {
+  --radius: 0.5rem;
+}
 @layer base {
   body {
     @apply font-primary bg-primary text-white leading-loose;
