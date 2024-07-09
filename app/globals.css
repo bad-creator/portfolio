@@ -18,3 +18,13 @@
 .text-outline-hover {
   -webkit-text-stroke: 1px #00ff99;
 }
+
+/* autofill browser resset background color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #1a202c inset !important; /* Цвет фона и увеличенная ширина */
+  -webkit-text-fill-color: #e2e8f0 !important; /* Цвет текста */
+  transition: background-color 5000s ease-in-out 0s; /* Убирает переходный эффект */
+}
