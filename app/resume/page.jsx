@@ -7,13 +7,24 @@ import {
   FaReact,
   FaFigma,
   FaNodeJs,
+  FaJava,
+  FaBootstrap,
 } from "react-icons/fa";
 
-import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
+import { BiLogoPostgresql } from "react-icons/bi";
+import {
+  SiTailwindcss,
+  SiNextdotjs,
+  SiCsharp,
+  SiDotnet,
+  SiMicrosoftsqlserver,
+  SiPython,
+} from "react-icons/si";
 
+//#region data
 // about data
 const about = {
-  title: "About me",
+  title: "Über mich",
   description:
     "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus esse a odio nam minus soluta assumenda",
   info: [
@@ -51,7 +62,7 @@ const about = {
 // experience data
 const experience = {
   icon: "",
-  title: "My experience",
+  title: "Erfahrung",
   description:
     "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, reprehenderit.",
   items: [
@@ -127,7 +138,6 @@ const education = {
     },
   ],
 };
-
 // skills data
 const skils = {
   title: "My skills",
@@ -135,12 +145,24 @@ const skils = {
     "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, reprehenderit.",
   skillList: [
     {
+      icon: <SiCsharp />,
+      name: "C#",
+    },
+    {
+      icon: <SiDotnet />,
+      name: ".NET",
+    },
+    {
       icon: <FaHtml5 />,
       name: "html 5",
     },
     {
       icon: <FaCss3 />,
       name: "css 3",
+    },
+    {
+      icon: <FaJs />,
+      name: "JavaScript",
     },
     {
       icon: <FaReact />,
@@ -154,8 +176,38 @@ const skils = {
       icon: <FaFigma />,
       name: "Figma",
     },
+
+    {
+      icon: <SiTailwindcss />,
+      name: "Tailwindcss",
+    },
+    {
+      icon: <SiNextdotjs />,
+      name: "Next.js",
+    },
+    {
+      icon: <SiMicrosoftsqlserver />,
+      name: "MSSQL",
+    },
+    {
+      icon: <SiPython />,
+      name: "Python",
+    },
+    {
+      icon: <FaJava />,
+      name: "Java",
+    },
+    {
+      icon: <BiLogoPostgresql />,
+      name: "PostgeSQL",
+    },
+    {
+      icon: <FaBootstrap />,
+      name: "Bootstrap",
+    },
   ],
 };
+//#endregion
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
