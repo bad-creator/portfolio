@@ -6,7 +6,14 @@
 }
 @layer base {
   body {
-    @apply font-primary bg-primary text-white leading-loose;
+    @apply font-primary  text-white leading-loose;
+    background: rgb(28, 27, 34);
+    background: linear-gradient(
+      180deg,
+      rgba(20, 19, 25, 1) 0%,
+      rgba(28, 27, 34, 1) 50%,
+      rgba(20, 19, 25, 1) 100%
+    );
   }
   h1 {
     @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;

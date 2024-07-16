@@ -21,36 +21,55 @@ import WorkSliderBtn from "@/components/WorkSliderBtn";
 const projects = [
   {
     num: "01",
-    category: "frontend",
-    title: "project 1",
+    category: "Fullstack",
+    title: "Kassasystem",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor nihil fuga excepturi officia iste. Tenetur.",
-    stack: [{ name: "html 5" }, { name: "css 3" }, { name: "javaScript" }],
-    image: "/assets/work/project1.webp",
+      "Dieses Projekt wurde während eines internen Praktikums bei BBRZ entwickelt. Unser Kunde war ein Café, das ein Kassensystem benötigte. Unser Produkt wird immer noch verwendet und funktioniert einwandfrei.",
+    stack: [
+      { name: "C#" },
+      { name: "MAUI" },
+      { name: "Blazor" },
+      { name: "SQLite" },
+      { name: "HTML5" },
+      { name: "CSS3" },
+    ],
+    image: "/assets/work/kassasystem.png",
     live: "",
-    github: "",
+    github: "https://github.com/syryoga/MauiKassasystem.git",
   },
   {
     num: "02",
-    category: "fullstack",
-    title: "project2",
+    category: "Fullstack",
+    title: "Portfolio",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor nihil fuga excepturi officia iste. Tenetur.",
-    stack: [{ name: "html 5" }, { name: "css 3" }, { name: "javaScript" }],
-    image: "/assets/work/project2.jpg",
+      "Dieses Projekt habe ich als Portfolio für mich selbst erstellt. Es hat ein responsives Design und enthält auch ein Kontaktformular.",
+    stack: [
+      { name: "JS" },
+      { name: "React" },
+      { name: "Next.js" },
+      { name: "Tailwind" },
+      { name: "HTML5" },
+      { name: "CSS3" },
+    ],
+    image: "/assets/work/resume.png",
     live: "",
     github: "",
   },
   {
     num: "03",
-    category: "frontend",
-    title: "project 3",
+    category: "Frontend",
+    title: "Autohändler",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor nihil fuga excepturi officia iste. Tenetur.",
-    stack: [{ name: "html 5" }, { name: "css 3" }, { name: "javaScript" }],
-    image: "/assets/work/project3.jpg",
+      "Dieses Projekt habe ich persönlich im Rahmen meiner Ausbildung im BBRZ entwickelt. Es ist das Frontend für eine Online-Plattform zum Autoverkauf.",
+    stack: [
+      { name: "HTML5" },
+      { name: "CSS3" },
+      { name: "JS" },
+      { name: "Bootstrap" },
+    ],
+    image: "/assets/work/Autofun.png",
     live: "",
-    github: "",
+    github: "https://github.com/bad-creator/Autoshop",
   },
 ];
 
@@ -110,7 +129,7 @@ export default function Work() {
               {/* buttons */}
               <div className="flex items-center gap-4">
                 {/* live project button */}
-                <Link href={project.live}>
+                {/* <Link href={project.live}>
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
@@ -121,10 +140,10 @@ export default function Work() {
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
-                </Link>
+                </Link> */}
 
                 {/* github project button */}
-                <Link href={project.github}>
+                <Link href={project.github} target="blank">
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
@@ -151,9 +170,9 @@ export default function Work() {
               {projects.map((project, index) => {
                 return (
                   <SwiperSlide key={index} className="w-full">
-                    <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/20">
+                    <div className="h-[460px] relative group flex justify-center items-center ">
                       {/* overlay */}
-                      <div className="absolute top-0 bottom-0 w-full bg-black/10 z-10"></div>
+                      <div className="absolute top-0 bottom-0 w-full  z-10"></div>
 
                       {/* image */}
                       <div className="relative w-full h-full">

@@ -1,40 +1,76 @@
 "use client";
-
+import { useState } from "react";
+import emailjs from "emailjs-com";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-
-const info = [
-  {
-    icon: <FaPhoneAlt />,
-    title: "Phone",
-    description: "(+43) 677 617 55 832",
-  },
-  {
-    icon: <FaEnvelope />,
-    title: "E-Mail",
-    description: "pascalserghei1985@gmail.com",
-  },
-  {
-    icon: <FaMapMarkerAlt />,
-    title: "Address",
-    description: "1120 Wien, Österreich",
-  },
-];
-
 import { motion } from "framer-motion";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_0krmwuk",
+        "template_e6jgqvv",
+        e.target,
+        "n2568wawtfaHlT7J4"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert("Nachricht wurde geschickt");
+        },
+        (error) => {
+          console.log(error.text);
+          alert("Fehler beim senden.");
+        }
+      );
+
+    setFormData({
+      firstname: "",
+      lastname: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
+  };
+
+  const info = [
+    {
+      icon: <FaPhoneAlt />,
+      title: "Tel.",
+      description: "(+43) 677 617 55 832",
+    },
+    {
+      icon: <FaEnvelope />,
+      title: "E-Mail",
+      description: "pascalserghei1985@gmail.com",
+    },
+    {
+      icon: <FaMapMarkerAlt />,
+      title: "Adresse",
+      description: "1120 Wien, Österreich",
+    },
+  ];
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -49,47 +85,65 @@ export default function Contact() {
           {/* form */}
           <div className="xl:w-[54%] order-2 xl:order-none">
             <form
-              action=""
+              onSubmit={handleSubmit}
               className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
             >
-              <h3 className="text-4xl text-accent">Let's work together</h3>
+              <h3 className="text-4xl text-accent">
+                Lass uns zusammenarbeiten
+              </h3>
               <p className="text-white/60">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-                sed, impedit nulla facere mollitia quibusdam numquam!
+                Ich freue mich darauf, von Ihnen zu hören und über mögliche
+                Kooperationen zu sprechen.
               </p>
 
               {/* input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstname" placeholder="Firstname" />
-                <Input type="lastname" placeholder="Lastname" />
-                <Input type="email" placeholder="Email address" />
-                <Input type="phone" placeholder="Phone number" />
+                <Input
+                  type="text"
+                  placeholder="Vorname"
+                  required
+                  name="firstname"
+                  value={formData.firstname}
+                  onChange={handleChange}
+                />
+                <Input
+                  type="text"
+                  placeholder="Nachname"
+                  required
+                  name="lastname"
+                  value={formData.lastname}
+                  onChange={handleChange}
+                />
+                <Input
+                  type="email"
+                  placeholder="E-Mail"
+                  required
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                <Input
+                  type="tel"
+                  placeholder="Tel."
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                />
               </div>
-
-              {/* select */}
-              <Select>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a service" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="est">Web Development</SelectItem>
-                    <SelectItem value="cst">Ui/Ux Design</SelectItem>
-                    <SelectItem value="mst">Logo Design</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
 
               {/* textarea */}
               <Textarea
-                className="h-[200px]"
-                placeholder="Type your message here."
+                className="min-h-[140px]"
+                placeholder="Nachricht..."
+                required
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
               />
 
               {/* button */}
-              <Button size="md" className="max-w-40">
-                Send message
+              <Button type="submit" size="md" className="max-w-40">
+                Senden
               </Button>
             </form>
           </div>

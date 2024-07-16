@@ -13,25 +13,32 @@ export default function Home() {
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-8">
           {/* text */}
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span>App/Web Developer</span>
+            <span className="mb-9">App/Web Developer</span>
             <h1 className="h1 lg:text-6xl">
               {/* Hallo, ich bin <br /> */}
               <span className="text-accent">Serghei PASCAL</span>
             </h1>
-            <p className="max-w-[500px] mb-9 text-white/80">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus
-              dignissimos sequi, quasi necessitatibus sit
+            <p className="max-w-[500px] mb-9 mt-3 text-white/80">
+              Motivierter Einsteiger in die Welt der App-/Web-Entwicklung,
+              bereit, durch praktische Erfahrung zu wachsen und sich
+              weiterzuentwickeln.
             </p>
             {/* btn & socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button
-                variant="outline"
-                size="lg"
-                className="uppercase flex items-center gap-2"
+              <a
+                href="/assets/doc/BewerbungsmappePS.pdf"
+                download="Pascal_Bewerbungsmappe.pdf"
               >
-                <span>Download CV</span>
-                <FiDownload className="text-xl" />
-              </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="uppercase flex items-center gap-2"
+                >
+                  <span>CV Herunteladen</span>
+                  <FiDownload className="text-xl" />
+                </Button>
+              </a>
+
               <div className="mb-8 xl:mb-0">
                 <Socials
                   containerStyles="flex gap-6"
