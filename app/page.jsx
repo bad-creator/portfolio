@@ -26,7 +26,7 @@ export default function Home() {
             {/* btn & socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <a
-                href="/assets/doc/BewerbungsmappePS.pdf"
+                href="/assets/doc/CV_PASCAL.pdf"
                 download="Pascal_Bewerbungsmappe.pdf"
               >
                 <Button
