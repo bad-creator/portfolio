@@ -111,7 +111,7 @@ export default function Work() {
               <p className="text-white/60">{project.description}</p>
 
               {/* stack */}
-              <ul className="flex flex-row gap-4">
+              <ul className="flex flex-row gap-4 flex-wrap">
                 {project.stack.map((item, index) => {
                   return (
                     <li key={index} className="text-xl text-accent">
@@ -170,7 +170,7 @@ export default function Work() {
               {projects.map((project, index) => {
                 return (
                   <SwiperSlide key={index} className="w-full">
-                    <div className="h-[460px] relative group flex justify-center items-center ">
+                    <div className="h-[260px] md:h-[360px] lg:h-[460px] relative group flex justify-center items-center ">
                       {/* overlay */}
                       <div className="absolute top-0 bottom-0 w-full  z-10"></div>
 
@@ -179,7 +179,7 @@ export default function Work() {
                         <Image
                           src={project.image}
                           fill
-                          className="object-cover"
+                          className="object-contain"
                           alt=""
                         />
                       </div>

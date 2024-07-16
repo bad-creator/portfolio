@@ -88,7 +88,7 @@ export default function Contact() {
               onSubmit={handleSubmit}
               className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
             >
-              <h3 className="text-4xl text-accent">
+              <h3 className="text-xl md:text-2xl lg:text-4xl text-accent text-center lg:text-start">
                 Lass uns zusammenarbeiten
               </h3>
               <p className="text-white/60">
@@ -150,7 +150,7 @@ export default function Contact() {
 
           {/* info */}
           <div className="flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0">
-            <ul className="flex flex-col gap-10">
+            <ul className="flex flex-col gap-2 lg:gap-10">
               {info.map((item, index) => {
                 return (
                   <li key={index} className="flex items-center gap-6">
@@ -159,7 +159,7 @@ export default function Contact() {
                     </div>
                     <div className="flex-1">
                       <p className="text-white/60">{item.title}</p>
-                      <h3 className="text-xl">{item.description}</h3>
+                      <h3 className="lg:text-xl">{item.description}</h3>
                     </div>
                   </li>
                 );
