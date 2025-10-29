@@ -1,37 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
   --radius: 0.5rem;
 }
+
 @layer base {
+  html {
+    @apply scroll-smooth;
+  }
   body {
-    @apply font-primary  text-white leading-loose;
-    background: rgb(28, 27, 34);
-    background: linear-gradient(
-      180deg,
-      rgba(20, 19, 25, 1) 0%,
-      rgba(28, 27, 34, 1) 50%,
-      rgba(20, 19, 25, 1) 100%
-    );
+    @apply bg-[#101010] text-white font-sans;
+    font-family: var(--font-inter), sans-serif;
   }
-  h1 {
-    @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
-  }
-}
-.text-outline {
-  -webkit-text-stroke: 1px #ffffff;
-}
-.text-outline-hover {
-  -webkit-text-stroke: 1px #00ff99;
 }
 
-/* autofill browser resset background color */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px #1a202c inset !important; /* Цвет фона и увеличенная ширина */
-  -webkit-text-fill-color: #e2e8f0 !important; /* Цвет текста */
-  transition: background-color 5000s ease-in-out 0s; /* Убирает переходный эффект */
+@layer components {
+  .glassmorphism {
+    background: rgba(25, 25, 25, 0.5);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .tooltip {
+    position: relative;
+  }
+
+  .tooltip::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    margin-bottom: 8px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    margin-bottom: 3px;
+  }
+
+  .tooltip:hover::before,
+  .tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
 }
