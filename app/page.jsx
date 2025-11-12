@@ -6,8 +6,12 @@ export default function Page() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [headerBottom, setHeaderBottom] = useState(0);
   const [language, setLanguage] = useState("de"); // 'de' for German, 'en' for English
+  const [mobileLangOpen, setMobileLangOpen] = useState(false);
   const headerRef = useRef(null);
   const menuRef = useRef(null);
+  const mobileLangRef = useRef(null);
+  const mobileLangButtonRef = useRef(null);
+  const [langDropdownPos, setLangDropdownPos] = useState({ left: 0, top: 0 });
 
   // Translations
   const translations = {
@@ -223,6 +227,17 @@ export default function Page() {
     return () => document.removeEventListener("keydown", onKey);
   }, []);
 
+  // Закрывать языковое меню при клике вне
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (mobileLangRef.current && !mobileLangRef.current.contains(e.target)) {
+        setMobileLangOpen(false);
+      }
+    }
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
   function handleSubmit(e) {
     e.preventDefault();
     const form = e.currentTarget;
@@ -270,12 +285,96 @@ export default function Page() {
           className="fixed top-4 left-0 right-0 z-[70] mt-0 mx-auto flex w-full max-w-4xl items-center justify-between whitespace-nowrap rounded-lg border border-solid border-white/10 glassmorphism px-8 py-3 transform-gpu"
         >
           <div className="flex items-center gap-4 text-white">
-            <div className="size-5">
-              <span className="material-symbols-outlined text-2xl">code</span>
-            </div>
             <h2 className="text-white text-lg font-bold leading-tight tracking-[-0.015em]">
-              Serghei Pascal
+              {"<Portfolio />"}
             </h2>
+            {/* Mobile language switcher adjacent to title */}
+            <div
+              ref={mobileLangRef}
+              className="md:hidden relative ml-1"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                ref={mobileLangButtonRef}
+                type="button"
+                aria-haspopup="menu"
+                aria-expanded={mobileLangOpen}
+                className="px-2 py-1 text-xs text-white/60 rounded hover:text-white/80"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMobileLangOpen((v) => {
+                    const next = !v;
+                    if (!v && mobileLangButtonRef.current) {
+                      const rect =
+                        mobileLangButtonRef.current.getBoundingClientRect();
+                      setLangDropdownPos({
+                        left: rect.left,
+                        top: rect.bottom + 5,
+                      });
+                    }
+                    return next;
+                  });
+                }}
+              >
+                {language === "de" ? "DE" : "EN"}
+              </button>
+              {mobileLangOpen && (
+                <div
+                  className="fixed min-w-[160px] rounded-lg border border-white/10 glassmorphism z-[90] md:hidden shadow-lg shadow-black/20"
+                  role="menu"
+                  style={{
+                    left: `${langDropdownPos.left}px`,
+                    top: `${langDropdownPos.top}px`,
+                    backdropFilter: "blur(12px)",
+                    WebkitBackdropFilter: "blur(12px)",
+                    background: "rgba(25,25,25,0.5)",
+                  }}
+                >
+                  <ul role="listbox" aria-label="Language" className="py-1">
+                    <li role="option" aria-selected={language === "de"}>
+                      <button
+                        className={`block w-full rounded-md px-3 py-3 text-left text-sm ${
+                          language === "de"
+                            ? "text-white bg-white/10"
+                            : "text-white/80 hover:text-white hover:bg-white/10"
+                        }`}
+                        onClick={() => {
+                          setLanguage("de");
+                          setMobileLangOpen(false);
+                        }}
+                      >
+                        <span>Deutsch (DE)</span>
+                        {language === "de" && (
+                          <span className="material-symbols-outlined text-base">
+                            check
+                          </span>
+                        )}
+                      </button>
+                    </li>
+                    <li role="option" aria-selected={language === "en"}>
+                      <button
+                        className={`block w-full rounded-md px-3 py-3 text-left text-sm ${
+                          language === "en"
+                            ? "text-white bg-white/10"
+                            : "text-white/80 hover:text-white hover:bg-white/10"
+                        }`}
+                        onClick={() => {
+                          setLanguage("en");
+                          setMobileLangOpen(false);
+                        }}
+                      >
+                        <span>English (EN)</span>
+                        {language === "en" && (
+                          <span className="material-symbols-outlined text-base">
+                            check
+                          </span>
+                        )}
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="hidden md:flex flex-1 justify-end gap-8">
